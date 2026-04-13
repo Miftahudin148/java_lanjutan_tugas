@@ -1,31 +1,37 @@
 import model.Tiket;
-import model.TiketEkonomi;
+import model.Kereta;
+
+import service.KeretaService;
 
 import payment.Pembayaran;
 import payment.TransferBank;
-import payment.EWallet;
 
-import service.TiketService;
+import java.util.Scanner;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
 
-        
-        TiketService service = new TiketService();
+        Scanner input = new Scanner(System.in);
+        KeretaService keretaService = new KeretaService();
 
-        // Membuat tiket
-        Tiket tiket1 = new TiketEkonomi("Miftah", "A1", "Bandung");
-        service.tambahTiket(tiket1);
+        // Tampilkan daftar kereta
+        keretaService.tampilkanKereta();
 
-        // Tampilkan tiket
-        service.tampilkanSemuaTiket();
+        System.out.print("Pilih kereta (nomor): ");
+        int pilih = input.nextInt();
 
-        System.out.println("=== PEMBAYARAN ===");
+        // Ambil data kereta
+        Kereta keretaDipilih = keretaService.getKereta(pilih - 1);
 
-        // Pembayaran
-        Pembayaran bayar1 = new TransferBank();
-        bayar1.prosesPembayaran(tiket1.getHarga());
+        // Buat tiket (tanpa input nama & kursi)
+        Tiket tiket = new Tiket(keretaDipilih);
 
         System.out.println();
+        tiket.displayInfo();
+
+        System.out.println("\n=== PEMBAYARAN ===");
+
+        Pembayaran bayar = new TransferBank();
+        bayar.prosesPembayaran(tiket.getHarga());
     }
 }

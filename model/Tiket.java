@@ -1,35 +1,37 @@
 package model;
 
-public abstract class Tiket {
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class Tiket {
+    private static int counter = 1; // untuk auto kursi
+
     private String nama;
     private String noKursi;
-    private String tujuan;
-    protected double harga;
+    private Kereta kereta;
 
-    public Tiket(String nama, String noKursi, String tujuan, double harga) {
-        this.nama = nama;
-        this.noKursi = noKursi;
-        this.tujuan = tujuan;
-        this.harga = harga;
-    }
-
-    //Encapsulation
-    public String getNama() {
-        return nama;
-    }
-
-    public String getNoKursi() {
-        return noKursi;
-    }
-
-    public String getTujuan() {
-        return tujuan;
+    public Tiket(Kereta kereta) {
+        this.nama = "Miftah"; // tetap
+        this.noKursi = "A" + counter++; // otomatis A1, A2, A3
+        this.kereta = kereta;
     }
 
     public double getHarga() {
-        return harga;
+        return kereta.getHarga();
     }
 
-    // Abstract Method
-    public abstract void displayInfo();
+    public String formatRupiah(double angka) {
+        NumberFormat rupiah = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+        return rupiah.format(angka);
+    }
+
+    public void displayInfo() {
+        System.out.println("=== TIKET KERETA API ===");
+        System.out.println("Nama        : " + nama);
+        System.out.println("No Kursi    : " + noKursi);
+        System.out.println("Kereta      : " + kereta.getNamaKereta());
+        System.out.println("Tujuan      : " + kereta.getTujuan());
+        System.out.println("Kelas       : " + kereta.getKelas());
+        System.out.println("Harga       : " + formatRupiah(getHarga()));
+    }
 }
