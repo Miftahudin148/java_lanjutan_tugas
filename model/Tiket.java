@@ -4,15 +4,15 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class Tiket {
-    private static int counter = 1; // untuk auto kursi
+    private static int counter = 1;
 
     private String nama;
     private String noKursi;
     private Kereta kereta;
 
     public Tiket(Kereta kereta) {
-        this.nama = "Miftah"; // tetap
-        this.noKursi = "A" + counter++; // otomatis A1, A2, A3
+        this.nama = "Miftah"; 
+        this.noKursi = "A" + counter++; 
         this.kereta = kereta;
     }
 

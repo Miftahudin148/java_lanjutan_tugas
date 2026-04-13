@@ -8,11 +8,8 @@ public class KeretaService {
     private List<Kereta> daftarKereta = new ArrayList<>();
 
     public KeretaService() {
-        // DATA DINAMIS (bisa ditambah)
         daftarKereta.add(new Kereta("Argo Parahyangan", "Bandung", "Ekonomi", 80000));
         daftarKereta.add(new Kereta("Argo Parahyangan", "Bandung", "Bisnis", 150000));
-        daftarKereta.add(new Kereta("Taksaka", "Jakarta", "Ekonomi", 100000));
-        daftarKereta.add(new Kereta("Taksaka", "Jakarta", "Bisnis", 200000));
     }
 
     public void tampilkanKereta() {

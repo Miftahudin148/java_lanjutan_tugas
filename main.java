@@ -14,16 +14,14 @@ public class Main {
         Scanner input = new Scanner(System.in);
         KeretaService keretaService = new KeretaService();
 
-        // Tampilkan daftar kereta
+        
         keretaService.tampilkanKereta();
 
         System.out.print("Pilih kereta (nomor): ");
         int pilih = input.nextInt();
 
-        // Ambil data kereta
         Kereta keretaDipilih = keretaService.getKereta(pilih - 1);
 
-        // Buat tiket (tanpa input nama & kursi)
         Tiket tiket = new Tiket(keretaDipilih);
 
         System.out.println();
