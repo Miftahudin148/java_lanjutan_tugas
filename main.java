@@ -10,7 +10,7 @@ import service.TiketService;
 public class main {
     public static void main(String[] args) {
 
-        // Service
+        
         TiketService service = new TiketService();
 
         // Membuat tiket
